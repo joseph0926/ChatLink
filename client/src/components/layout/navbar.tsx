@@ -4,7 +4,7 @@ import { Button } from "../ui/button";
 
 const Navbar = () => {
   return (
-    <section className="Navbar">
+    <section className="topbar">
       <div className="flex-between px-5 py-4">
         <Link to="/" className="flex items-center gap-3">
           <img

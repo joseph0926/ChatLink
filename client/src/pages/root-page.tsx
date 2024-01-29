@@ -8,7 +8,7 @@ const RootPage = () => {
     <div className="w-full md:flex">
       <Navbar />
       <Sidebar />
-      <section className="flex h-full flex-1">
+      <section className="ml-0 flex h-full flex-1 md:ml-[270px]">
         <Outlet />
       </section>
       <Footer />

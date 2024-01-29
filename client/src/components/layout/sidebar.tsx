@@ -17,7 +17,7 @@ const Sidebar = () => {
   };
 
   return (
-    <nav className="leftsidebar">
+    <nav className="leftsidebar fixed left-0 top-0">
       <div className="flex flex-col gap-11">
         <Link to="/" className="flex items-center gap-3">
           <img

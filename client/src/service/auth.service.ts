@@ -15,3 +15,8 @@ export const getCurrentUser = async () => {
   const { data } = await customAxios.get("/auth/currentuser");
   return data;
 };
+
+export const getUsers = async () => {
+  const { data } = await customAxios.get("/auth/get-users");
+  return data;
+};

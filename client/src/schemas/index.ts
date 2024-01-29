@@ -14,3 +14,11 @@ export const SignupValidation = z.object({
     message: "ProfileImage은 필수 입력 필드입니다.",
   }),
 });
+
+export const SigninValidation = z.object({
+  email: z.string().email(),
+  password: z
+    .string()
+    .min(4, { message: "Password은 최소 4글자입니다." })
+    .max(12, { message: "Password은 최대 12글자입니다." }),
+});

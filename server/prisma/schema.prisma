@@ -22,6 +22,23 @@ model User {
   passwordResetToken     String?  @unique
   passwordResetExpires   DateTime @default(now())
 
+  posts Post[]
+
   @@index([username])
   @@index([email])
+}
+
+model Post {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  caption       String
+  imageUrl      String?
+  imagePublicId String?
+  location      String?
+  tags          String[]
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
 }

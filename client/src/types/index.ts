@@ -46,3 +46,22 @@ export type CurrentUserReturnType = {
   message: string;
   user: User;
 };
+
+export type PostType = {
+  caption: string;
+  imageUrl: string;
+  tags: string;
+  userId: string;
+};
+
+export type Post = {
+  id: string;
+  createdAt: Date;
+  updatedAt: Date;
+  caption: string;
+  imageUrl: string | null;
+  imagePublicId: string | null;
+  location?: string;
+  tags: string[];
+  userId: string;
+};

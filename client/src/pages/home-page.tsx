@@ -1,10 +1,10 @@
 import UserCard from "@/components/home/user-card";
 import Loader from "@/components/ui/loader";
-import { useUser } from "@/hooks/useUser";
+import { useAuth } from "@/hooks/useAuth";
 import { User } from "@/types";
 
 const HomePage = () => {
-  const { users } = useUser();
+  const { users } = useAuth();
 
   if (false) {
     return (

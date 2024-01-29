@@ -1,4 +1,9 @@
-import { getCurrentUser, signin, signup } from "@/service/auth.service";
+import {
+  getCurrentUser,
+  getUsers,
+  signin,
+  signup,
+} from "@/service/auth.service";
 import {
   CurrentUserReturnType,
   SignInReturnType,
@@ -27,6 +32,11 @@ export const useAuth = () => {
     retry: 1,
   });
 
+  const { data: users, isPending: isGetUsersLoading } = useQuery({
+    queryKey: ["users"],
+    queryFn: async () => await getUsers(),
+  });
+
   return {
     signupMutation,
     signinMutation,
@@ -34,5 +44,7 @@ export const useAuth = () => {
     isSigninLoading,
     currentUser,
     isGetCurrntUserLoading,
+    users,
+    isGetUsersLoading,
   };
 };

@@ -17,6 +17,7 @@ import { verify } from "jsonwebtoken";
 import { IAuthPayload } from "@/shared/auth.interface";
 import { CustomError, IErrorResponse } from "@/shared/custom-error-handler";
 import { appRoutes } from "@/routes";
+import cookieSession from "cookie-session";
 
 const SERVER_PORT = 8000;
 
@@ -30,6 +31,17 @@ export const start = (app: Application): void => {
 
 const securityMiddleware = (app: Application): void => {
   app.set("trust proxy", 1);
+  app.use(
+    cookieSession({
+      name: "session",
+      keys: [`${config.SECRET_KEY_ONE}`, `${config.SECRET_KEY_TWO}`],
+      maxAge: 24 * 7 * 3600000,
+      secure: config.NODE_ENV !== "development",
+      ...(config.NODE_ENV !== "development" && {
+        sameSite: "none",
+      }),
+    })
+  );
   app.use(hpp());
   app.use(helmet());
   app.use(
@@ -43,6 +55,7 @@ const securityMiddleware = (app: Application): void => {
     if (req.headers.authorization) {
       const token = req.headers.authorization.split(" ")[1];
       const payload = verify(token, config.JWT_TOKEN!) as IAuthPayload;
+
       req.currentUser = payload;
     }
     next();

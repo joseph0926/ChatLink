@@ -20,7 +20,8 @@ import { useAuth } from "@/hooks/useAuth";
 const SignUpPage = () => {
   const navigate = useNavigate();
 
-  const { signupMutation, isSignupLoading } = useAuth();
+  const { signupMutation, signinMutation, isSignupLoading, isSigninLoading } =
+    useAuth();
 
   const form = useForm<z.infer<typeof SignupValidation>>({
     resolver: zodResolver(SignupValidation),
@@ -35,36 +36,25 @@ const SignUpPage = () => {
   const signupHandler = async (user: z.infer<typeof SignupValidation>) => {
     try {
       const newUser = await signupMutation(user);
-      console.log(newUser);
 
       if (!newUser?.user) {
         return;
       }
 
-      // const session = await signInAccount({
-      //   email: user.email,
-      //   password: user.password,
-      // });
+      const token = await signinMutation({
+        username: user.email,
+        password: user.password,
+      });
 
-      // if (!session) {
-      //   toast({ title: "Something went wrong. Please login your new account" });
+      if (!token) {
+        navigate("/sign-in");
 
-      //   navigate("/sign-in");
+        return;
+      }
 
-      //   return;
-      // }
+      form.reset();
 
-      // const isLoggedIn = await checkAuthUser();
-
-      // if (isLoggedIn) {
-      //   form.reset();
-
-      //   navigate("/");
-      // } else {
-      //   toast({ title: "Login failed. Please try again." });
-
-      //   return;
-      // }
+      navigate("/");
     } catch (error) {
       console.log({ error });
     }
@@ -142,7 +132,7 @@ const SignUpPage = () => {
           />
 
           <Button type="submit" className="shad-button_primary">
-            {isSignupLoading ? (
+            {isSignupLoading || isSigninLoading ? (
               <div className="flex-center gap-2">
                 <Loader /> Loading...
               </div>
@@ -154,7 +144,7 @@ const SignUpPage = () => {
           <p className="text-small-regular mt-2 text-center text-light-2">
             Already have an account?
             <Link
-              to="/sign-in"
+              to="/auth/sign-in"
               className="text-small-semibold ml-1 text-primary-500">
               Log in
             </Link>

@@ -30,3 +30,19 @@ export type SignUpReturnType = {
   user: User;
   token: string;
 };
+
+export type SignInType = {
+  username: string;
+  password: string;
+};
+
+export type SignInReturnType = {
+  message: string;
+  user: User;
+  token: string;
+};
+
+export type CurrentUserReturnType = {
+  message: string;
+  user: User;
+};

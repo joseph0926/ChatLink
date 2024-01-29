@@ -66,6 +66,9 @@ export const createUser = async (
   const user = await createAuthUser(authData);
 
   const userJWT: string = signToken(user.id, user.email, user.username);
+
+  req.session!.jwt = userJWT;
+
   res
     .status(StatusCodes.CREATED)
     .json({ message: "회원가입 성공", user, token: userJWT });

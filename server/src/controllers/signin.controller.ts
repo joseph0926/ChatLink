@@ -50,6 +50,9 @@ export const login = async (req: Request, res: Response): Promise<void> => {
     existingUser.email,
     existingUser.username
   );
+
+  req.session!.jwt = userJWT;
+
   const userData: Omit<User, "password"> | null = exclude(existingUser, [
     "password",
   ]);

@@ -1,7 +1,17 @@
 import { customAxios } from "@/lib/custom-axios";
-import { SignUpType } from "@/types";
+import { SignInType, SignUpType } from "@/types";
 
 export const signup = async (payload: SignUpType) => {
   const { data } = await customAxios.post("/auth/signup", payload);
+  return data;
+};
+
+export const signin = async (payload: SignInType) => {
+  const { data } = await customAxios.post("/auth/signin", payload);
+  return data;
+};
+
+export const getCurrentUser = async () => {
+  const { data } = await customAxios.get("/auth/currentuser");
   return data;
 };

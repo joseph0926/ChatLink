@@ -1,6 +1,12 @@
-import { signup } from "@/service/auth.service";
-import { SignUpReturnType, SignUpType } from "@/types";
-import { useMutation } from "@tanstack/react-query";
+import { getCurrentUser, signin, signup } from "@/service/auth.service";
+import {
+  CurrentUserReturnType,
+  SignInReturnType,
+  SignInType,
+  SignUpReturnType,
+  SignUpType,
+} from "@/types";
+import { useMutation, useQuery } from "@tanstack/react-query";
 
 export const useAuth = () => {
   const { mutateAsync: signupMutation, isPending: isSignupLoading } =
@@ -9,8 +15,24 @@ export const useAuth = () => {
         await signup(payload),
     });
 
+  const { mutateAsync: signinMutation, isPending: isSigninLoading } =
+    useMutation({
+      mutationFn: async (payload: SignInType): Promise<SignInReturnType> =>
+        await signin(payload),
+    });
+
+  const { data: currentUser, isPending: isGetCurrntUserLoading } = useQuery({
+    queryKey: ["user"],
+    queryFn: async (): Promise<CurrentUserReturnType> => await getCurrentUser(),
+    retry: 1,
+  });
+
   return {
     signupMutation,
+    signinMutation,
     isSignupLoading,
+    isSigninLoading,
+    currentUser,
+    isGetCurrntUserLoading,
   };
 };

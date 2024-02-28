@@ -1,0 +1,9 @@
+{
+  "name": "@chatlink-server",
+  "version": "0.0.1",
+  "packageManager": "yarn@4.1.0",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ]
+}

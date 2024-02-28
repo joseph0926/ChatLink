@@ -13,6 +13,8 @@
     <a href="https://github.com/joseph0926/ChatLink/issues">버그 신고하기</a>
     ·
     <a href="https://github.com/joseph0926/ChatLink/issues">기능 요청하기</a>
+    ·
+    <a href="https://github.com/users/joseph0926/projects/10">작업 현황</a>
   </p>
 </div>
 <!-- 프로젝트 소개 -->

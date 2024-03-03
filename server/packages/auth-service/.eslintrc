@@ -18,10 +18,7 @@
     "semi": [2, "always"],
     "curly": ["warn"],
     "prefer-template": ["warn"],
-    "space-before-function-paren": [
-      0,
-      { "anonymous": "always", "named": "always" }
-    ],
+    "space-before-function-paren": [0, { "anonymous": "always", "named": "always" }],
     "camelcase": 0,
     "no-return-assign": 0,
     "quotes": ["error", "single"],
@@ -32,18 +29,10 @@
     "import/order": [
       "warn",
       {
-        "groups": [
-          "builtin",
-          "external",
-          "internal",
-          "parent",
-          "sibling",
-          "index",
-          "type",
-          "object"
-        ],
+        "groups": ["builtin", "external", "internal", "parent", "sibling", "index", "type", "object"],
         "newlines-between": "always"
       }
-    ]
+    ],
+    "no-var": "off"
   }
 }

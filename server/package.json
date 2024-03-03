@@ -6,14 +6,18 @@
   "scripts": {
     "dev": "npm run dev-gateway",
     "dev-gateway": "cd packages/gateway-service && npm run dev",
-    "lint:check": "npm run lint-gateway",
-    "prettier:check": "npm run prettier-gateway",
+    "lint:check": "npm run lint-gateway && npm run lint-auth",
+    "prettier:check": "npm run prettier-gateway && npm run prettier-auth",
+    "lint:fix": "npm run lint-gateway-fix && npm run lint-auth-fix",
+    "prettier:fix": "npm run prettier-gateway-fix && npm run lint-auth-fix",
     "lint-gateway": "cd packages/gateway-service && npm run lint:check",
     "prettier-gateway": "cd packages/gateway-service && npm run prettier:check",
-    "lint:fix": "npm run lint-gateway-fix",
-    "prettier:fix": "npm run prettier-gateway-fix",
     "lint-gateway-fix": "cd packages/gateway-service && npm run lint:fix",
-    "prettier-gateway-fix": "cd packages/gateway-service && npm run prettier:fix"
+    "prettier-gateway-fix": "cd packages/gateway-service && npm run prettier:fix",
+    "lint-auth": "cd packages/auth-service && npm run lint:check",
+    "prettier-auth": "cd packages/auth-service && npm run prettier:check",
+    "lint-auth-fix": "cd packages/auth-service && npm run lint:fix",
+    "prettier-auth-fix": "cd packages/auth-service && npm run prettier:fix"
   },
   "keywords": [],
   "author": "joseph0926",

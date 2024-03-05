@@ -13,7 +13,7 @@ import compression from 'compression';
 import { checkConnection } from '@auth/elasticsearch';
 import { appRoutes } from '@auth/routes';
 
-const SERVER_PORT = 4002;
+const SERVER_PORT = 3000;
 const log: Logger = winstonLogger(`${config.ELASTIC_SEARCH_URL}`, 'authElasticSearchServer', 'debug');
 
 export function start(app: Application): void {

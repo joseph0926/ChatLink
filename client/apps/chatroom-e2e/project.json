@@ -1,0 +1,9 @@
+{
+  "name": "chatroom-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/chatroom-e2e/src",
+  "targets": {},
+  "implicitDependencies": ["chatroom"],
+  "tags": []
+}

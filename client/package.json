@@ -2,7 +2,14 @@
   "name": "@client/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "lint:check": "npm run lint:chatroom && npm run lint:dashboard",
+    "lint:fix": "npm run lint:chatroom:fix && npm run lint:dashboard:fix",
+    "lint:chatroom": "cd apps/chatroom && eslint src/**/*.{ts,tsx}",
+    "lint:dashboard": "cd apps/dashboard && eslint src/**/*.{ts,tsx}",
+    "lint:chatroom:fix": "cd apps/chatroom && eslint src/**/*.{ts,tsx} --fix",
+    "lint:dashboard:fix": "cd apps/dashboard && eslint src/**/*.{ts,tsx} --fix"
+  },
   "private": true,
   "dependencies": {
     "react": "18.2.0",

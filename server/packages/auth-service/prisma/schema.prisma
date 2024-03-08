@@ -30,6 +30,6 @@ model User {
   status       UserStatus @default(OFFLINE)
   lastSeen     DateTime?
   bio          String?    @default("")
-  code         Int?
+  code         String?
   role         UserRole   @default(USER)
 }

@@ -6,7 +6,7 @@ build:
   local:
     push: false
   artifacts:
-    - image: chatlink/client-srv
+    - image: chatlink/client
       context: client
       docker:
         dockerfile: Dockerfile
@@ -14,7 +14,7 @@ build:
         manual:
           - src: "**/*.js"
             dest: .
-    - image: chatlink/auth-srv
+    - image: chatlink/auth
       context: auth
       docker:
         dockerfile: Dockerfile
@@ -22,7 +22,7 @@ build:
         manual:
           - src: "src/**/*.ts"
             dest: .
-    - image: chatlink/chat-srv
+    - image: chatlink/chat
       context: chat
       docker:
         dockerfile: Dockerfile
@@ -30,7 +30,7 @@ build:
         manual:
           - src: "src/**/*.ts"
             dest: .
-    - image: chatlink/community-srv
+    - image: chatlink/community
       context: community
       docker:
         dockerfile: Dockerfile
@@ -38,7 +38,7 @@ build:
         manual:
           - src: "src/**/*.ts"
             dest: .
-    - image: chatlink/notification-srv
+    - image: chatlink/notification
       context: notification
       docker:
         dockerfile: Dockerfile
@@ -46,7 +46,7 @@ build:
         manual:
           - src: "src/**/*.ts"
             dest: .
-    - image: chatlink/message-srv
+    - image: chatlink/message
       context: message
       docker:
         dockerfile: Dockerfile
@@ -54,7 +54,7 @@ build:
         manual:
           - src: "src/**/*.ts"
             dest: .
-    - image: chatlink/search-srv
+    - image: chatlink/search
       context: search
       docker:
         dockerfile: Dockerfile

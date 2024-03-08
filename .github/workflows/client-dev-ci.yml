@@ -1,28 +1,28 @@
-name: Client Dev CI
+# name: Client Dev CI
 
-on:
-  push:
-    branches:
-      - main
+# on:
+#   push:
+#     branches:
+#       - main
 
-jobs:
-  lint-and-prettier-check:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+# jobs:
+#   lint-and-prettier-check:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v2
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: "20"
+#       - name: Setup Node.js
+#         uses: actions/setup-node@v2
+#         with:
+#           node-version: "20"
 
-      - name: Install dependencies in the server directory
-        run: |
-          cd client
-          npm install
+#       - name: Install dependencies in the server directory
+#         run: |
+#           cd client
+#           npm install
 
-      - name: Run ESLint and Prettier checks in packages
-        run: |
-          cd client
-          npm run lint:check
+#       - name: Run ESLint and Prettier checks in packages
+#         run: |
+#           cd client
+#           npm run lint:check

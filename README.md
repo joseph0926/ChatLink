@@ -32,7 +32,6 @@ ChatLink는 카카오톡 그룹톡의 친밀함과 트위터의 공개적인 소
   - React
   - TailwindCSS
   - React-Query
-  - MicroFront (NX)
 - Backend
   - NodeJs
   - Express

@@ -19,8 +19,8 @@
 </div>
 <!-- 프로젝트 소개 -->
 
-임시 데모 영상입니다.
-![game-auction](https://github.com/joseph0926/GameAuction/assets/100750188/a1db9277-e73f-43d0-bfc1-5ae127b2d653)
+![chatlink-landing](https://github.com/joseph0926/ChatLink/assets/100750188/0ff93db9-527c-4da3-a321-b4e632e80b91)
+
 
 ## 프로젝트 소개
 

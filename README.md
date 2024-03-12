@@ -21,6 +21,10 @@
 
 ![chatlink-landing](https://github.com/joseph0926/ChatLink/assets/100750188/0ff93db9-527c-4da3-a321-b4e632e80b91)
 
+## 구조도
+![sys](https://github.com/joseph0926/ChatLink/assets/100750188/d7c6d1b0-d500-4294-ac85-6d5fd89495df)
+
+
 
 ## 프로젝트 소개
 

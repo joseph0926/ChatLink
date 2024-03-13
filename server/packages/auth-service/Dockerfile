@@ -1,25 +1,35 @@
 FROM node:21-alpine3.18 as builder
 
 WORKDIR /app
-COPY package*.json ./
-COPY tsconfig.json ./
+RUN mkdir -p /app/packages/auth-service
+
+COPY package.json ./
 COPY src ./src
 
-RUN npm install -g npm@latest
+COPY packages/auth-service/package.json ./packages/auth-service/
+COPY packages/auth-service/tsconfig.json ./packages/auth-service/
+COPY packages/auth-service ./packages/auth-service
+
+RUN npm install -g typescript npm@latest
+RUN npm install
+
+WORKDIR /app/packages/auth-service
+
 RUN npx prisma generate
-RUN npm ci && npm run build
+RUN npm run build
 
 FROM node:21-alpine3.18
 
 WORKDIR /app
-RUN apk add --no-cache curl
-COPY package*.json ./
-COPY tsconfig.json ./
 
-RUN npm install -g pm2 npm@latest
-RUN npm ci --production
-COPY --from=builder /app/build ./build
+COPY --from=builder /app/package.json ./
+COPY --from=builder /app/src ./src
+
+COPY --from=builder /app/packages/auth-service ./packages/auth-service
+
+RUN npm install -g typescript pm2 npm@latest
+RUN npm i --production
 
 EXPOSE 3002
 
-CMD [ "npm", "run", "start" ]
+CMD ["npm", "start", "--prefix", "packages/auth-service"]

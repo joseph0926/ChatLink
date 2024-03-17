@@ -20,6 +20,7 @@ jobs:
       - name: Install dependencies in the server directory
         run: |
           cd server
+          cd auth-service
           npm install
 
       - name: Run ESLint and Prettier checks in packages

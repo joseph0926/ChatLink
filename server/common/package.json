@@ -1,6 +1,6 @@
 {
-  "name": "@joseph0926/chatlink-share",
-  "version": "0.0.1",
+  "name": "@joseph0926-chatlink/share",
+  "version": "0.0.2",
   "description": "Shared library for ChatLink app",
   "types": "./src/index.d.ts",
   "files": [
@@ -15,18 +15,11 @@
   "keywords": [],
   "author": "joseph0926",
   "license": "ISC",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
-  },
   "exports": {
     ".": {
       "import": "./src/index.js",
       "require": "./src/index.js"
     }
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/joseph0926/ChatLink-common.git"
   },
   "devDependencies": {
     "@babel/cli": "^7.23.9",

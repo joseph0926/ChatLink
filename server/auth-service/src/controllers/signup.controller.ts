@@ -2,7 +2,7 @@ import crypto from 'crypto';
 
 import { Request, Response } from 'express';
 import { db } from '@/db';
-import { BadRequestError, winstonLogger } from '@joseph0926/chatlink-share';
+import { BadRequestError, winstonLogger } from '@joseph0926-chatlink/share';
 import { signupSchema } from '@/schemas/signup.schema';
 import { hashPassword } from '@/lib/utils';
 import { config } from '@/config';

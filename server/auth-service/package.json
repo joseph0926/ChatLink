@@ -19,7 +19,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@joseph0926/chatlink-share": "^0.0.2",
+    "@joseph0926-chatlink/share": "^0.0.2",
     "@prisma/client": "^5.11.0",
     "bcrypt": "^5.1.1",
     "compression": "^1.7.4",

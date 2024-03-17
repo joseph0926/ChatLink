@@ -1,7 +1,7 @@
 import { Client } from '@elastic/elasticsearch';
 import { ClusterHealthResponse } from '@elastic/elasticsearch/lib/api/types';
 import { config } from '@/config';
-import { winstonLogger } from '@joseph0926/chatlink-share';
+import { winstonLogger } from '@joseph0926-chatlink/share';
 import { Logger } from 'winston';
 
 const log: Logger = winstonLogger(`${config.ELASTIC_SEARCH_URL}`, 'authElasticSearchServer', 'debug');

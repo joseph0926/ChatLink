@@ -1,5 +1,5 @@
 ```sh
 ## docker
-docker build -t chatlink/auth -f packages/auth-service/Dockerfile .
+docker build --build-arg NPM_TOKEN=${NPM_TOKEN} -t chatlink/auth -f Dockerfile .
 
 ```

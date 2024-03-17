@@ -28,9 +28,13 @@ spec:
               containerPort: 5601
           env:
             - name: ELASTICSEARCH_HOSTS
-              value: https://chatlink.dev
+              value: http://elasticsearch_container:9200
+            - name: ELASTICSEARCH_USERNAME
+              value: kibana_system
+            - name: ELASTICSEARCH_PASSWORD
+              value: kibana1234
             - name: ELASTICSEARCH_SERVICEACCOUNT_TOKEN
-              value: AAEAAWVsYXN0aWMvZmxlZXQtc2VydmVyL2tpYmFuYV90b2tlbjprbUswZ2JyWFJ4cTdjSlJKRlN6MXpR
+              value: AAEAAWVsYXN0aWMva2liYW5hL2NoYXRsaW5rLWtpYmFuYTpUbWlsNmlkQlNwaW03cURqUDJpWWRR
           volumeMounts:
             - name: kibana-config
               mountPath: /usr/share/kibana/config

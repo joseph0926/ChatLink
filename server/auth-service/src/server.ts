@@ -3,12 +3,13 @@ import http from 'http';
 import 'express-async-errors';
 import { CustomError, IErrorResponse, winstonLogger } from '@joseph0926-chatlink/share';
 import { Logger } from 'winston';
-import { config } from '@/config';
 import { Application, Request, Response, NextFunction, json, urlencoded } from 'express';
 import hpp from 'hpp';
 import helmet from 'helmet';
 import cors from 'cors';
 import compression from 'compression';
+
+import { config } from '@/config';
 import { checkConnection } from '@/elasticsearch';
 import { appRoutes } from '@/routes';
 

@@ -1,14 +1,15 @@
 import crypto from 'crypto';
 
 import { Request, Response } from 'express';
-import { db } from '@/db';
 import { BadRequestError, winstonLogger } from '@joseph0926-chatlink/share';
+import { StatusCodes } from 'http-status-codes';
+import { Logger } from 'winston';
+
+import { db } from '@/db';
 import { signupSchema } from '@/schemas/signup.schema';
 import { hashPassword } from '@/lib/utils';
 import { config } from '@/config';
-import { StatusCodes } from 'http-status-codes';
 import { signToken } from '@/lib/token';
-import { Logger } from 'winston';
 
 const log: Logger = winstonLogger(`${config.ELASTIC_SEARCH_URL}`, 'authService', 'debug');
 

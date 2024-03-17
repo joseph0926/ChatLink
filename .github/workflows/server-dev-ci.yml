@@ -25,5 +25,6 @@ jobs:
       - name: Run ESLint and Prettier checks in packages
         run: |
           cd server
+          cd auth-service
           npm run lint:check
           npm run prettier:check

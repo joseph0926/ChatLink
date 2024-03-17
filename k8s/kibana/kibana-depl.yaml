@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kibana
+  namespace: production
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kibana
+  template:
+    metadata:
+      labels:
+        app: kibana
+    spec:
+      containers:
+        - name: kibana
+          image: docker.elastic.co/kibana/kibana:8.11.0
+          resources:
+            limits:
+              memory: "1Gi"
+              cpu: "1500m"
+            requests:
+              cpu: 250m
+              memory: 1Gi
+          ports:
+            - name: kibana
+              containerPort: 5601
+          env:
+            - name: ELASTICSEARCH_HOSTS
+              value: https://chatlink.dev
+            - name: ELASTICSEARCH_SERVICEACCOUNT_TOKEN
+              value: AAEAAWVsYXN0aWMvZmxlZXQtc2VydmVyL2tpYmFuYV90b2tlbjprbUswZ2JyWFJ4cTdjSlJKRlN6MXpR
+          volumeMounts:
+            - name: kibana-config
+              mountPath: /usr/share/kibana/config
+      volumes:
+        - name: kibana-config
+          configMap:
+            name: kibana-config

@@ -2,60 +2,34 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress-service
+  namespace: production
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/use-regex: "true"
 spec:
+  ingressClassName: nginx
   rules:
     - host: chatlink.dev
       http:
         paths:
-          - path: /api/chat(/|$)(.*)
-            pathType: Prefix
+          - pathType: Prefix
+            path: "/elastic"
             backend:
               service:
-                name: chat-srv
+                name: elastic
                 port:
-                  number: 3000
-          - path: /api/users(/|$)(.*)
-            pathType: Prefix
+                  number: 9200
+          - pathType: Prefix
+            path: "/kibana"
+            backend:
+              service:
+                name: kibana
+                port:
+                  number: 5601
+          - pathType: Prefix
+            path: "/api/auth/?(.*)"
             backend:
               service:
                 name: auth-srv
                 port:
-                  number: 3000
-          - path: /api/notification(/|$)(.*)
-            pathType: Prefix
-            backend:
-              service:
-                name: notification-srv
-                port:
-                  number: 3000
-          - path: /api/message(/|$)(.*)
-            pathType: Prefix
-            backend:
-              service:
-                name: message-srv
-                port:
-                  number: 3000
-          - path: /api/community(/|$)(.*)
-            pathType: Prefix
-            backend:
-              service:
-                name: community-srv
-                port:
-                  number: 3000
-          - path: /api/search(/|$)(.*)
-            pathType: Prefix
-            backend:
-              service:
-                name: search-srv
-                port:
-                  number: 3000
-          - path: /(.*)
-            pathType: Prefix
-            backend:
-              service:
-                name: client-srv
-                port:
-                  number: 3000
+                  number: 3002

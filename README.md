@@ -22,9 +22,8 @@
 ![chatlink-landing](https://github.com/joseph0926/ChatLink/assets/100750188/0ff93db9-527c-4da3-a321-b4e632e80b91)
 
 ## 구조도
+
 ![sys](https://github.com/joseph0926/ChatLink/assets/100750188/d7c6d1b0-d500-4294-ac85-6d5fd89495df)
-
-
 
 ## 프로젝트 소개
 
@@ -56,7 +55,9 @@ ChatLink는 카카오톡 그룹톡의 친밀함과 트위터의 공개적인 소
 - Dev
 
   ```sh
-
+  // skaffold 설치 필요
+  // 관련 링크: https://skaffold.dev/docs/install/
+  skaffold dev
   ```
 
 - Prodction
@@ -68,5 +69,6 @@ ChatLink는 카카오톡 그룹톡의 친밀함과 트위터의 공개적인 소
 ### 환경변수
 
 ```sh
-    -
+NPM_TOKEN=
+
 ```

@@ -1,4 +1,4 @@
-apiVersion: skaffold/v3
+apiVersion: skaffold/v4beta5
 kind: Config
 metadata:
   name: chatlink
@@ -6,64 +6,17 @@ build:
   local:
     push: false
   artifacts:
-    - image: chatlink/client
-      context: client
-      docker:
-        dockerfile: Dockerfile
-      sync:
-        manual:
-          - src: "**/*.js"
-            dest: .
     - image: chatlink/auth
-      context: auth
+      context: server/auth-service
       docker:
-        dockerfile: Dockerfile
+        dockerfile: Dockerfile.dev
       sync:
         manual:
           - src: "src/**/*.ts"
             dest: .
-    # - image: chatlink/chat
-    #   context: chat
-    #   docker:
-    #     dockerfile: Dockerfile
-    #   sync:
-    #     manual:
-    #       - src: "src/**/*.ts"
-    #         dest: .
-    # - image: chatlink/community
-    #   context: community
-    #   docker:
-    #     dockerfile: Dockerfile
-    #   sync:
-    #     manual:
-    #       - src: "src/**/*.ts"
-    #         dest: .
-    # - image: chatlink/notification
-    #   context: notification
-    #   docker:
-    #     dockerfile: Dockerfile
-    #   sync:
-    #     manual:
-    #       - src: "src/**/*.ts"
-    #         dest: .
-    # - image: chatlink/message
-    #   context: message
-    #   docker:
-    #     dockerfile: Dockerfile
-    #   sync:
-    #     manual:
-    #       - src: "src/**/*.ts"
-    #         dest: .
-    # - image: chatlink/search
-    #   context: search
-    #   docker:
-    #     dockerfile: Dockerfile
-    #   sync:
-    #     manual:
-    #       - src: "src/**/*.ts"
-    #         dest: .
 manifests:
   rawYaml:
-    - k8s-*
+    - k8s/ingress-srv.yaml
+    - k8s/**/*.yaml
 deploy:
   kubectl: {}

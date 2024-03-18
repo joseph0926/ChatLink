@@ -3,7 +3,7 @@ name: Server Dev CI
 on:
   push:
     branches:
-      - main
+      - auth-service
 
 jobs:
   lint-and-prettier-check:
@@ -29,3 +29,11 @@ jobs:
           cd auth-service
           npm run lint:check
           npm run prettier:check
+
+      - name: Create & Push Docker
+        run: |
+          cd server
+          cd auth-service
+          docker build -t chatlink/auth .
+          docker tag chatlink/auth:latest joseph0926/chatlink-auth:latest
+          docker push joseph0926/chatlink-auth:latest

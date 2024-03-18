@@ -1,24 +1,26 @@
 {
   "name": "@joseph0926-chatlink/share",
-  "version": "0.0.2",
+  "version": "0.0.13",
   "description": "Shared library for ChatLink app",
-  "types": "./src/index.d.ts",
+  "main": "build/src/index.js",
+  "types": "src/index.d.ts",
   "files": [
-    "build",
-    "src"
+    "build/**/*",
+    "src/**/*"
   ],
   "scripts": {
     "build": "npm run build:cjs && npm run build:esm && tsc --outDir build/src && node scripts/build-package.js",
     "build:cjs": "cross-env NODE_ENV=production BABEL_ENV=cjs babel src --presets=./scripts/babel-preset.js --extensions .ts,.tsx --ignore src/**/*.specs.tsx --out-dir build/cjs --source-maps",
-    "build:esm": "cross-env NODE_ENV=production BABEL_ENV=esm babel src --presets=./scripts/babel-preset.js --extensions .ts,.tsx --ignore src/**/*.specs.tsx --out-dir build/esm --source-maps"
+    "build:esm": "cross-env NODE_ENV=production BABEL_ENV=esm babel src --presets=./scripts/babel-preset.js --extensions .ts,.tsx --ignore src/**/*.specs.tsx --out-dir build/esm --source-maps",
+    "pub": "npm run build && npm publish --access public"
   },
   "keywords": [],
   "author": "joseph0926",
   "license": "ISC",
   "exports": {
     ".": {
-      "import": "./src/index.js",
-      "require": "./src/index.js"
+      "import": "./build/src/index.js",
+      "require": "./build/src/index.js"
     }
   },
   "devDependencies": {

@@ -53,8 +53,6 @@ spec:
               value: "false"
             - name: xpack.security.authc.api_key.enabled
               value: "true"
-            - name: xpack.monitoring.collection.enabled
-              value: "true"
             - name: xpack.security.enrollment.enabled
               value: "true"
             - name: xpack.security.authc.token.enabled

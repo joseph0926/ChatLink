@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: auth
-          image: chatlink/auth
+          image: joseph0926/chatlink-auth:latest
           env:
             - name: POSTGRES_USER
               valueFrom:

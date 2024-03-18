@@ -50,7 +50,6 @@ services:
       http.host: 0.0.0.0
       xpack.security.enabled: "true"
       xpack.security.authc.api_key.enabled: "true"
-      xpack.monitoring.collection.enabled: "true"
       xpack.security.enrollment.enabled: "true"
       xpack.security.authc.token.enabled: "true"
       ELASTIC_PASSWORD: elastic1234

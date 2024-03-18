@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "pm2 start ./build/packages/auth-service/src/app.js -i 5 --attach --watch | pino-pretty -c",
+    "start": "pm2 start ./build/app.js -i 5 --attach --watch | pino-pretty -c",
     "stop": "pm2 stop all",
     "delete": "pm2 delete all",
     "dev": "nodemon -r tsconfig-paths/register src/app.ts | pino-pretty -c",
@@ -19,7 +19,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@joseph0926-chatlink/share": "^0.0.2",
+    "@joseph0926-chatlink/share": "^0.0.13",
     "@prisma/client": "^5.11.0",
     "bcrypt": "^5.1.1",
     "compression": "^1.7.4",

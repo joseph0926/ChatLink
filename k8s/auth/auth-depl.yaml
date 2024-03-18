@@ -19,20 +19,34 @@ spec:
             - name: POSTGRES_USER
               valueFrom:
                 secretKeyRef:
-                  name: pg-user-pass
-                  key: username
+                  name: auth-secret
+                  key: psql-username
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: pg-user-pass
-                  key: password
+                  name: auth-secret
+                  key: psql-password
             - name: DATABASE_URL
               value: "postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@auth-postgres-srv:5432/authdb"
+            - name: ELASTIC_SEARCH_URL
+              value: "http://localhost:9200"
+            - name: ELASTIC_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: elastic-secret
+                  key: elasticsearch-username
+            - name: ELASTIC_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: elastic-secret
+                  key: elasticsearch-password
+            - name: API_GATEWAY_URL
+              value: http://localhost:3001
             - name: JWT_KEY
               valueFrom:
                 secretKeyRef:
-                  name: jwt-secret
-                  key: JWT_KEY
+                  name: auth-secret
+                  key: jwt-key
           resources:
             requests:
               cpu: "250m"

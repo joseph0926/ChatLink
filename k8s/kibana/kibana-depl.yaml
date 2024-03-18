@@ -30,11 +30,20 @@ spec:
             - name: ELASTICSEARCH_HOSTS
               value: http://elasticsearch_container:9200
             - name: ELASTICSEARCH_USERNAME
-              value: kibana_system
+              valueFrom:
+                secretKeyRef:
+                  name: kibana-secret
+                  key: username
             - name: ELASTICSEARCH_PASSWORD
-              value: kibana1234
+              valueFrom:
+                secretKeyRef:
+                  name: kibana-secret
+                  key: password
             - name: ELASTICSEARCH_SERVICEACCOUNT_TOKEN
-              value: AAEAAWVsYXN0aWMva2liYW5hL2NoYXRsaW5rLWtpYmFuYTpUbWlsNmlkQlNwaW03cURqUDJpWWRR
+              valueFrom:
+                secretKeyRef:
+                  name: kibana-secret
+                  key: token
           volumeMounts:
             - name: kibana-config
               mountPath: /usr/share/kibana/config

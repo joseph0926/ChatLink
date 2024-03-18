@@ -29,16 +29,16 @@ spec:
             - name: DATABASE_URL
               value: "postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@auth-postgres-srv:5432/authdb"
             - name: ELASTIC_SEARCH_URL
-              value: "http://localhost:9200"
+              value: http://elasticsearch_container:9200
             - name: ELASTIC_USERNAME
               valueFrom:
                 secretKeyRef:
-                  name: elastic-secret
+                  name: auth-secret
                   key: elasticsearch-username
             - name: ELASTIC_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: elastic-secret
+                  name: auth-secret
                   key: elasticsearch-password
             - name: API_GATEWAY_URL
               value: http://localhost:3001
